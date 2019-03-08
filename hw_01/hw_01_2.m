@@ -1,3 +1,13 @@
+% 题目:2、
+% Use each of the following methods to find a solution in [0.1,1]
+% accurate to within 1e-4 for [600 * x.^4 - 550 * x.^3 + 200 * x.^2 - 20 * x - 1]
+% 
+% a.bisection
+% b.newton's
+% c.secant
+% d.false position
+% e.muller
+% 
 
 % 1.获取粗取值范围:
 x1 = 0.1:0.01:1;
@@ -5,6 +15,7 @@ y2 = formula(x1);
 plot(x1, y2);
 %%%%%%%%%%%%%%%%%%%%%
 
+% 2.正式运算:
 p0 = 0.1;
 p1 = 1;
 tol = 1e-7;
@@ -228,8 +239,4 @@ end
 % 函数:原式
 function y = formula(x)
 y = 600 * x.^4 - 550 * x.^3 + 200 * x.^2 - 20 * x - 1;
-end
-% 函数:不动点式
-function y = formula_g(x)
-% y = exp((3*x))-5;
 end

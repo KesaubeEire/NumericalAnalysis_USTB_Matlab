@@ -1,3 +1,6 @@
+% 题目:1、
+% 分别用不动点迭代与 Newton 法求解方程 [x-exp((3*x))+5=0] 的正根与负根。
+% % % % % % % % % % % % % % % % % % %
 format long
 set(gca, 'XGrid', 'on');
 set(gca, 'YGrid', 'on');
