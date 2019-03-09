@@ -1,11 +1,11 @@
-% 题目:1、
+%% 题目:1、
 % 分别用不动点迭代与 Newton 法求解方程 [x-exp((3*x))+5=0] 的正根与负根。
 % % % % % % % % % % % % % % % % % % %
 format long
 set(gca, 'XGrid', 'on');
 set(gca, 'YGrid', 'on');
 
-% 1.获取粗取值范围: -5 和 (0.5,0.6)
+%% 1.获取粗取值范围: -5 和 (0.5,0.6)
 % x1 = -6:0.01:1.9;
 % y2 = x1 - exp((3*x1))+5;
 % plot(x1,y2);
@@ -13,6 +13,7 @@ set(gca, 'YGrid', 'on');
 % y1 = formula(0.5726218);
 % fprintf('%f\n',y1);
 
+%% 正式运算
 % 2.1 参数
 % % % % % % % % % % % % % % % % % % %
 n0 = 20;
@@ -25,6 +26,7 @@ fprintf('\n\n不动点迭代\n');
 fprintf('p0:\n');
 for x = 0.5
     fpi(x, tol);
+    
 end
 
 % 2.3 newton迭代:
@@ -41,6 +43,7 @@ i = 1;
 k = 0;
 while i < 10
     x(i + 1) = formula_g(x(i));
+    disp(['the ', num2str(i), ' time .'])
     if (abs(x(i+1)-x(i)) < tol)
         k = 1;
         break
@@ -85,3 +88,8 @@ end
 function y = formula_g(x)
 y = exp((3 * x)) - 5;
 end
+
+%% 分析
+% 从结果来看,不动点迭代经过了4次
+% 牛顿法在不同的初始点迭代次数是不同的
+% 使用牛顿法还是要注意初始点的选择

@@ -1,4 +1,4 @@
-% 题目:2、
+%% 题目:2、
 % Use each of the following methods to find a solution in [0.1,1]
 % accurate to within 1e-4 for [600 * x.^4 - 550 * x.^3 + 200 * x.^2 - 20 * x - 1]
 % 
@@ -9,13 +9,13 @@
 % e.muller
 % 
 
-% 1.获取粗取值范围:
+%% 1.获取粗取值范围:
 x1 = 0.1:0.01:1;
 y2 = formula(x1);
 plot(x1, y2);
 %%%%%%%%%%%%%%%%%%%%%
 
-% 2.正式运算:
+%% 2.正式运算:
 p0 = 0.1;
 p1 = 1;
 tol = 1e-7;
@@ -61,7 +61,7 @@ fprintf('\nMuller法开始:%%%%%%%%%%%%%%%%%%%%\n');
 res_mu = muller_method(p0, p1, p2, 1000, tol);
 fprintf('res:\t%d\n', res_mu);
 fprintf('Muller法结束%%%%%%%%%%%%%%%%%%%%\n\n');
-% % % % % % % % % % % % % % % % % % % % % % %
+%% 3.函数部分
 % a.二分法
 function res = bisection(p0, p1, tol)
 % assign
@@ -240,3 +240,10 @@ end
 function y = formula(x)
 y = 600 * x.^4 - 550 * x.^3 + 200 * x.^2 - 20 * x - 1;
 end
+
+%% 解析:
+% 从几种解法的循环次数来看
+% Muller法和牛顿法循环次数最少为6次
+% 割线法次之8次 二分法24次
+% 错位法循环了几百次
+% 得到一个比较符合理论的数值
