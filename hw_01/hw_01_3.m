@@ -1,3 +1,4 @@
+clc;clear;
 % 题目:3、
 % 应用Newton法求f(x）的零点，
 % e=10^-6这里f(x)=x-sinx。

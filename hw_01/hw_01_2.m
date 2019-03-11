@@ -1,18 +1,22 @@
+clc;
+clear;
+
 %% 题目:2、
 % Use each of the following methods to find a solution in [0.1,1]
 % accurate to within 1e-4 for [600 * x.^4 - 550 * x.^3 + 200 * x.^2 - 20 * x - 1]
-% 
+%
 % a.bisection
 % b.newton's
 % c.secant
 % d.false position
 % e.muller
-% 
+%
 
 %% 1.获取粗取值范围:
-x1 = 0.1:0.01:1;
+x1 = 0.1:0.001:0.3;
 y2 = formula(x1);
-plot(x1, y2);
+y3 = 0;
+plot(x1, y2,x1,y3,'*');
 %%%%%%%%%%%%%%%%%%%%%
 
 %% 2.正式运算:
@@ -61,6 +65,7 @@ fprintf('\nMuller法开始:%%%%%%%%%%%%%%%%%%%%\n');
 res_mu = muller_method(p0, p1, p2, 1000, tol);
 fprintf('res:\t%d\n', res_mu);
 fprintf('Muller法结束%%%%%%%%%%%%%%%%%%%%\n\n');
+
 %% 3.函数部分
 % a.二分法
 function res = bisection(p0, p1, tol)
@@ -134,12 +139,13 @@ function res = falseposition(x0, x1, max_steps, tol)
 f = @(x) 600 * x^4 - 550 * x^3 + 200 * x^2 - 20 * x - 1;
 for i = 0:max_steps
     x2 = x1 - (f(x1) * (x1 - x0) / (f(x1) - f(x0)));
-    disp(['the ', num2str(i), ' time is ', num2str(x2)]);
+    %     disp(['the ', num2str(i), ' time is ', num2str(x2)]);
     c = f(x2);
     absolute_c = abs(c);
     
     if absolute_c < tol
         res = x2;
+        disp(['the ', num2str(i), ' time is ', num2str(x2)]);
         break
     end
     
