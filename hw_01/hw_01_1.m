@@ -1,3 +1,4 @@
+
 %% 题目:1、
 % 分别用不动点迭代与 Newton 法求解方程 [x-exp((3*x))+5=0] 的正根与负根。
 % % % % % % % % % % % % % % % % % % %
@@ -26,7 +27,6 @@ fprintf('\n\n不动点迭代\n');
 fprintf('p0:\n');
 for x = 0.5
     fpi(x, tol);
-    
 end
 
 % 2.3 newton迭代:
@@ -41,9 +41,34 @@ function xc = fpi(x0, tol)
 x(1) = x0;
 i = 1;
 k = 0;
+fprintf('负根不动点方程:y = exp((3 * x)) - 5;\n');
 while i < 10
     x(i + 1) = formula_g(x(i));
     disp(['the ', num2str(i), ' time .'])
+    if (abs(x(i+1)-x(i)) < tol)
+        k = 1;
+        break
+    end
+    i = i + 1;
+end
+
+if (k == 0)
+    fprintf('%.2f迭代失败\n', x0);
+    return
+end
+
+xc = x(i+1);
+fprintf('%.2f:\t%.4d\n', x0, x(i+1));
+
+fprintf('\n');
+
+x(1) = x0;
+i = 1;
+k = 0;
+fprintf('正根不动点方程:y = 3 * x - ln(5);\n');
+while i < 100
+    x(i + 1) = formula_g2(x(i));
+    disp(['the ', num2str(i), ' time .', num2str(x(i + 1))])
     if (abs(x(i+1)-x(i)) < tol)
         k = 1;
         break
@@ -84,9 +109,13 @@ end
 function y = formula(x)
 y = x - exp((3 * x)) + 5;
 end
-% 函数:不动点式
+% 函数:不动点式_1_负根
 function y = formula_g(x)
 y = exp((3 * x)) - 5;
+end
+% 函数:不动点式_1_正根
+function y = formula_g2(x)
+y = (log(x+5)) / 3;
 end
 
 %% 分析

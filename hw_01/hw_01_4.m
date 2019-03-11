@@ -58,7 +58,7 @@ clear x
 x = x0;
 for k = 1:max_steps
     xk = x;
-    %     disp(['the ', num2str(k), ' time is ', num2str(x)])
+        disp(['the ', num2str(k), ' time is ', num2str(x)])
     x = x - formula(x) / dif_f(x);
     if (abs(xk-x) < tol)
         break;
@@ -75,3 +75,5 @@ end
 
 
 %% 3.分析
+% 两次循环即达到收敛
+% 加速了10多倍

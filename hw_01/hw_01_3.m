@@ -10,7 +10,7 @@ y2 = formula(x1);
 plot(x1, y2);
 % % % % % % % % % % % % % % % % % % % % % % %
 
-% fprintf(num2str(formula(-1.752325e-08)));
+fprintf(num2str(formula(-1.752325e-08)));
 
 p0 = -0.0002;
 tol = 1e-12;
@@ -23,6 +23,7 @@ fprintf('牛顿法结束%%%%%%%%%%%%%%%%%%%%\n\n');
 
 
 fprintf('第一种求重根方法:\n');
+syms x;
 fx = x - sin(x);
 dfx = diff(fx, x);
 fprintf('fx =\t');
